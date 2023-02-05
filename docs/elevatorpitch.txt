@@ -1,0 +1,5 @@
+Project Name: BetterCatalog
+Members: Jake, Devin
+Description:
+BetterCatalog replaces CSU Fullerton’s class catalog. It displays the 
+discription prereqs and postreqs for each class in visual flowchart/tree.
