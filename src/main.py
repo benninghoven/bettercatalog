@@ -1,28 +1,16 @@
-import requests
-from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 
-# URL of the PetSmart homepage
-url = "https://catalog.fullerton.edu/preview_program.php?catoid=75&poid=35650&hl=%22CPSC%22&returnto=search"
-
-def getsoup(url):
-    response = requests.get(url)
-    return BeautifulSoup(response.content, "html.parser")
-
-soup = getsoup(url)
-
-# find all product links on the page
-divs = soup.findAll("div", attrs={"class":"custom_leftpad_20"})
-
-# print the names and URLs of the products
-#class="price-sales"
-
-for div in divs:
-    for span in div.findAll("span"):
-        #print(span.text)
-        href = span.find("a")
-        if href:
-            print(href.attrs["href"])
-        
-
-    
-
+options = Options()
+options.headless = True
+driver = webdriver.Firefox(options=options)
+driver.get("http://www.python.org")
+assert "Python" in driver.title
+elem = driver.find_element(By.NAME, "q")
+elem.clear()
+elem.send_keys("pycon")
+elem.send_keys(Keys.RETURN)
+assert "No results found." not in driver.page_source
+driver.close()
