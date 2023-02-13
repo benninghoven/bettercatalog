@@ -1,16 +1,52 @@
-from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
+import json
 
-options = Options()
-options.headless = True
-driver = webdriver.Firefox(options=options)
-driver.get("http://www.python.org")
-assert "Python" in driver.title
-elem = driver.find_element(By.NAME, "q")
-elem.clear()
-elem.send_keys("pycon")
-elem.send_keys(Keys.RETURN)
-assert "No results found." not in driver.page_source
-driver.close()
+data = {
+    "bob" : "course"
+        }
+
+with open("courses.json", "w") as write_file:
+    json.dump(data, write_file)
+
+file = open("../data/manualentery.txt")
+
+def GetCode(string):
+    if len(string) != 3 and len(string) != 4:
+        return ""
+    count = 0
+    for x in string:
+        count += 1
+        if count > 3:
+            break
+        if not x.isdigit():
+            return ""
+    return string
+
+def GetName(string):
+    counter = 0
+    for char in string:
+        counter += 1
+        if not char.isupper():
+            return ""
+    if counter != 4:
+        return ""
+    return string
+
+# deptcode coursenum courseletter coursename credits
+# course description
+
+for line in file.readlines():
+    isName = False
+    lines = line.split()
+    name = GetName(lines[0])
+    code = GetCode(lines[1])
+    desc = ""
+    if name and code:
+        isName = True
+    if isName:
+        desc = line.split("-")[1]
+        desc = desc.split("(")[0]
+        desc = desc[1:]
+        print(f"{name} - {code} - {desc}")
+
+
+print("ran")
