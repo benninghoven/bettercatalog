@@ -268,7 +268,7 @@ CPSC 474 - Parallel and Distributed Computing (3)
 Concepts of distributed computing; distributed memory and shared memory architectures; parallel programming techniques; inter-process communication and synchronization; programming for parallel architectures such as multi-core and GPU platforms; project involving distributed application development.
 Prerequisites: CPSC 351; Computer Science or Computer Engineering major or minor; or Computer Science or Computer Engineering graduate standing.
 400-level Undergraduate Course available for Graduate Credit
-CPSC 479 - Introduction to High Performance Computing (3)
+CPSC 480 - Introduction to High Performance Computing (3)
 Introduction to the concepts of high-performance computing and the paradigms of parallel programming in a high level programming language, design and implementation of parallel algorithms on distributed memory, machine learning techniques on large data sets, implementation of parallel algorithms.
 Prerequisites: CPSC 351 Computer Science or Computer Engineering major or minor; or Computer Science or Computer Engineering graduate standing.
 400-level Undergraduate Course available for Graduate Credit
