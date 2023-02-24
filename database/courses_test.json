@@ -1,0 +1,159 @@
+{
+"CPSC120": {
+"DEPTCODE": "CPSC",
+"COURSENUM": "120",
+"COURSELETTER": "",
+"COURSENAME": "Introduction to Programming",
+"COURSEDESCRIPTION": "Introduction to the concepts underlying all computer programming: design and execution of programs; sequential nature of programs; use of assignment, control and input/output statements to accomplish desired tasks; design and use of functions. Structured and object-oriented methodologies. (1.5 hours lecture, 3 hours laboratory)",
+"CREDITS": "3",
+"GRADCREDIT": "False",
+"MAJMINREQ": [
+"MATH125"
+]
+},
+"CPSC121": {
+"DEPTCODE": "CPSC",
+"COURSENUM": "121",
+"COURSELETTER": "",
+"COURSENAME": "Object-Oriented Programming",
+"COURSEDESCRIPTION": "The object-oriented programming paradigm: classes, member functions, interfaces, inheritance, polymorphism, and exceptions. Design practices including encapsulation, decoupling, and documentation. Pointers/references and memory management. Recursion. (2 hours lecture, 2 hours activity)",
+"CREDITS": "3",
+"GRADCREDIT": "False",
+"MAJMINREQ": [
+"CPSC120"
+]
+},
+"CPSC131": {
+"DEPTCODE": "CPSC",
+"COURSENUM": "131",
+"COURSELETTER": "",
+"COURSENAME": "Data Structures",
+"COURSEDESCRIPTION": "Classical data structures: vector, linked list, stack, queue, binary search tree, and graph representations. Worst-case analysis, amortized analysis, and big-O notation. Object-oriented and recursive implementation of data structures. Self-resizing vectors and self-balancing trees. Empirical performance measurement.",
+"CREDITS": "3",
+"GRADCREDIT": "False",
+"MAJMINREQ": [
+"CPSC121"
+]
+},
+"CPSC223C": {
+"DEPTCODE": "CPSC",
+"COURSENUM": "223",
+"COURSELETTER": "C",
+"COURSENAME": "C Programming",
+"COURSEDESCRIPTION": "Systems programming in the C language, including its syntax and semantics; essential idioms; important parts of the C11 and POSIX C APIs; security issues; and notable extensions libraries.",
+"CREDITS": "3",
+"GRADCREDIT": "False",
+"MAJMINREQ": [
+"CPSC131"
+]
+},
+"CPSC223J": {
+"DEPTCODE": "CPSC",
+"COURSENUM": "223",
+"COURSELETTER": "J",
+"COURSENAME": "Java Programming",
+"COURSEDESCRIPTION": "Characteristics of Java: portable, robust, secure, object-oriented, high performance; using the Java environment; server administration; types, expressions and control flow; classes, interfaces and packages; threads; exceptions; class libraries; Java for the Internet; tools, the Java Virtual machine. (2 hours lecture, 2 hours lab per week)",
+"CREDITS": "3",
+"GRADCREDIT": "False",
+"MAJMINREQ": [
+"CPSC131"
+]
+},
+"CPSC223N": {
+"DEPTCODE": "CPSC",
+"COURSENUM": "223",
+"COURSELETTER": "N",
+"COURSENAME": "Visual C# Programming",
+"COURSEDESCRIPTION": "Characteristics of C#, object-oriented design concepts, control structures, methods, arrays, classes, objects, inheritance, polymorphism, exception handling, graphical user interfaces, multithreading, characters, strings, files, streams. Rudiments of the Unified Modeling Language Software development assignments. (2 hours lecture, 2 hours laboratory)",
+"CREDITS": "3",
+"GRADCREDIT": "False",
+"MAJMINREQ": [
+"CPSC131"
+]
+},
+"CPSC223P": {
+"DEPTCODE": "CPSC",
+"COURSENUM": "223",
+"COURSELETTER": "P",
+"COURSENAME": "Python Programming",
+"COURSEDESCRIPTION": "Characteristics of Python: portable, robust, secure, object-oriented, functional, high performance, extensible; types, expressions, and control flow; classes, abstract base classes, modules, and packages; threads; exceptions; Python standard library. 2 hours lecture and 2 hours laboratory per week)",
+"CREDITS": "3",
+"GRADCREDIT": "False",
+"MAJMINREQ": [
+"CPSC131"
+]
+},
+"CPSC240": {
+"DEPTCODE": "CPSC",
+"COURSENUM": "240",
+"COURSELETTER": "",
+"COURSENAME": "Computer Organization and Assembly Language",
+"COURSEDESCRIPTION": "Digital logic and architecture of a computer system, machine level representation of data, memory system organization, structure of low-level computer languages. Machine, assembly, and macro language programming. Principles of assembler operation, input-output programming, interrupt/exception handling. Laboratory programming assignments. (2 hours lecture, 2 hours laboratory)",
+"CREDITS": "3",
+"GRADCREDIT": "False",
+"MAJMINREQ": [
+"CPSC131",
+"MATH170A",
+"MATH280"
+]
+},
+"CPSC253": {
+"DEPTCODE": "CPSC",
+"COURSENUM": "253",
+"COURSELETTER": "",
+"COURSENAME": "Cybersecurity Foundations and Principles",
+"COURSEDESCRIPTION": "Security goals, security systems, access controls, networks and security, integrity, cryptography fundamentals, authentication. Attacks: software, network, website; management considerations, security standards in government and industry; security issues in requirements, architecture, design, implementation, testing, operation, maintenance, acquisition and services.",
+"CREDITS": "3",
+"GRADCREDIT": "False",
+"MAJMINREQ": []
+},
+"CPSC315": {
+"DEPTCODE": "CPSC",
+"COURSENUM": "315",
+"COURSELETTER": "",
+"COURSENAME": "Professional Ethics in Computing",
+"COURSEDESCRIPTION": "Ethics and moral philosophy as applied to software and digital artifacts. Notions of rights, responsibilities, property, ownership, privacy, security, and professional ethics. Security obligations. Intellectual propertystatutes, licenses, and their terms. Oral and written reports are required.",
+"CREDITS": "3",
+"GRADCREDIT": "False",
+"MAJMINREQ": [
+"CPSC131"
+]
+},
+"CPSC323": {
+"DEPTCODE": "CPSC",
+"COURSENUM": "323",
+"COURSELETTER": "",
+"COURSENAME": "Compilers and Languages",
+"COURSEDESCRIPTION": "Basic concepts of programming languages and principles of translation. Topics include history of programming languages, various programming paradigms, language design issues and criteria, design of compilers for modern programming languages.",
+"CREDITS": "3",
+"GRADCREDIT": "False",
+"MAJMINREQ": [
+"CPSC131"
+]
+},
+"CPSC332": {
+"DEPTCODE": "CPSC",
+"COURSENUM": "332",
+"COURSELETTER": "",
+"COURSENAME": "File Structures and Database Systems",
+"COURSEDESCRIPTION": "Fundamental theories and design of database systems, the Structured Query Language (SQL), basic concepts and techniques of data organization in secondary storage. Topics include introduction to database systems, ER model, relational model, index structures and hashing techniques.",
+"CREDITS": "3",
+"GRADCREDIT": "False",
+"MAJMINREQ": [
+"CPSC131"
+]
+},
+"CPSC335": {
+"DEPTCODE": "CPSC",
+"COURSENUM": "335",
+"COURSELETTER": "",
+"COURSENAME": "Algorithm Engineering",
+"COURSEDESCRIPTION": "Algorithm design using classical patterns: exhaustive search, divide and conquer, randomization, hashing, reduction, dynamic programming, and the greedy method. Asymptotic and experimental efficiency analysis. NP-completeness and decidability. Implementing algorithms to solve practical problems.",
+"CREDITS": "3",
+"GRADCREDIT": "False",
+"MAJMINREQ": [
+"MATH170B",
+"CPSC131"
+]
+}
+}
