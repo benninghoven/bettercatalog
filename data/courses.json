@@ -8,7 +8,7 @@
 "CREDITS": "3",
 "GRADCREDIT": "False",
 "MAJMINREQ": [
-"MATH125"
+"MATH125$"
 ]
 },
 "CPSC121": {
@@ -305,8 +305,8 @@
 "CREDITS": "1",
 "GRADCREDIT": "False",
 "MAJMINREQ": [
-"BIOL101",
-"BIOL103"
+"BIOL101$",
+"BIOL103$"
 ]
 },
 "BIOL151": {
@@ -364,8 +364,8 @@
 "CREDITS": "3",
 "GRADCREDIT": "False",
 "MAJMINREQ": [
-"MATH125",
-"MATH150A"
+"MATH125$",
+"MATH150A$"
 ]
 },
 "CHEM125": {
@@ -400,8 +400,8 @@
 "CREDITS": "1",
 "GRADCREDIT": "False",
 "MAJMINREQ": [
-"GEOL101",
-"GEOL110T"
+"GEOL101$",
+"GEOL110T$"
 ]
 },
 "GEOL201": {
@@ -426,7 +426,7 @@
 "CREDITS": "1",
 "GRADCREDIT": "False",
 "MAJMINREQ": [
-"GEOL201"
+"GEOL201$"
 ]
 },
 "MATH250A": {
@@ -474,7 +474,7 @@
 "CREDITS": "1",
 "GRADCREDIT": "False",
 "MAJMINREQ": [
-"PHYS225"
+"PHYS225$"
 ]
 },
 "PHYS226": {
@@ -499,7 +499,7 @@
 "CREDITS": "1",
 "GRADCREDIT": "False",
 "MAJMINREQ": [
-"PHYS226"
+"PHYS226$"
 ]
 },
 "PHYS227": {
@@ -523,7 +523,7 @@
 "CREDITS": "1",
 "GRADCREDIT": "False",
 "MAJMINREQ": [
-"PHYS227"
+"PHYS227$"
 ]
 },
 "CPSC254": {
