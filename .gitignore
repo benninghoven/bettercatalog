@@ -1,8 +1,0 @@
-*
-!.gitignore
-!./src
-!./Dockerfile
-!./LICENSE
-!./requirements.txt
-!./run.sh
-!./frontend
