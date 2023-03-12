@@ -37,4 +37,5 @@ def closeDB(db):
     """
     :param mysql.connector.connect db: db connection
     """
+    print("closing db")
     db.close()
