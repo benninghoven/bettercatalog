@@ -25,10 +25,8 @@ cd api
 ```
 2. Run the following command to set `FLASK_APP` environment variable
 ```bash
-# For linux:
+# For mac/linux:
 export FLASK_APP=main.py
-# For Mac:
-set FLASK_APP=main.py
 ```
 3. Run flask
 ```bash
