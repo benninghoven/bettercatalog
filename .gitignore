@@ -5,5 +5,4 @@
 !./LICENSE
 !./requirements.txt
 !./run.sh
-
-
+!./frontend
