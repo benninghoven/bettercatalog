@@ -2,7 +2,13 @@ How to Install and Run Flask
 ======
 
 ## Installation
-1. Create a python virtual environment and activate:
+1. Change into api directory
+
+```bash
+cd api
+```
+
+2. Create a python virtual environment and activate:
 
 ```bash
 python3 -m venv [VENV NAME]
@@ -12,7 +18,7 @@ source [/dir/to/venv]/activate
 **Note**: [VENV NAME] can be any venv name of your choice
 
 
-2. Use the package manager [`pip`](https://pip.pypa.io/en/stable/) to install dependencies:
+3. Use the package manager [`pip`](https://pip.pypa.io/en/stable/) to install dependencies:
 
 ```bash
 pip install -r requirements.txt
