@@ -9,7 +9,7 @@ function useFetchFromDB() {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                const response = await fetch('http://127.0.0.1:5000/fetchall-courses', );
+                const response = await fetch('http://127.0.0.1:5000/fetchall-courses');
                 const response_json = await response.json();
                 setData(response_json);
             } catch(err) {
