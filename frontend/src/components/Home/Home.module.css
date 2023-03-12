@@ -13,6 +13,7 @@
 
 .navbar { /*FIXME*/
   background-color: #0d1b2a;
+  display: flex;
   flex-direction: row;
   font-size: calc(10px + 2vmin);
   color: #e0e1dd;

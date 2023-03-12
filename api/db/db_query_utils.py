@@ -2,12 +2,20 @@ from db.db_utils import *
 from db.db_parser_utils import *
 
 def fetchAllCourses():
+    # connect to DB and get connection cursor
+    # TODO: db connection error check
     db = connectDB()
     cursor = getDBCursor(db)
+    
+    # execute sql and fetch results
+    # TODO: db execute error check
     cursor.execute("SELECT * FROM COURSE")
     data = cursor.fetchall()
+
+    # parse execute result and disconnect from db
     data_dict = fetchAllCoursesParser(data)
     closeDB(db)
+
     return data_dict
 
 def fetchAllPreReqs():
