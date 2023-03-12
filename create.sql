@@ -128,8 +128,9 @@ INSERT INTO COURSE (DEPTCODE, COURSENUM, COURSELETTER, COURSENAME, COURSEDESCRIP
 ('HONR', 201, 'B', 'Honors Seminar: American Institutions and Values since 1877', 'Critically examines the development of American institutions and values from Reconstruction to present day, with particular reference to California government and politics. The interaction, conflict and cooperation of diverse groups with specific attention to race, ethnicity, gender and class.', 3, False, TRUE);
 
 
+
 INSERT INTO COURSEPREREQ (COURSEDEPT, COURSENUM, COURSELETTER, PREREQDEPT, PREREQNUM, PREREQCOURSELETTER, ISCOREQ) VALUES
-('CPSC', 120, '', 'MATH', 125, '', False),
+('CPSC', 120, '', 'MATH', 125, '', True),
 ('CPSC', 121, '', 'CPSC', 120, '', False),
 ('CPSC', 131, '', 'CPSC', 121, '', False),
 ('CPSC', 223, 'C', 'CPSC', 131, '', False),
@@ -155,29 +156,29 @@ INSERT INTO COURSEPREREQ (COURSEDEPT, COURSENUM, COURSELETTER, PREREQDEPT, PRERE
 ('MATH', 150, 'B', 'MATH', 150, 'A', False),
 ('MATH', 338, '', 'MATH', 130, '', False),
 ('MATH', 338, '', 'MATH', 150, 'B', False),
-('BIOL', 101, 'L', 'BIOL', 101, '', False),
-('BIOL', 101, 'L', 'BIOL', 103, '', False),
+('BIOL', 101, 'L', 'BIOL', 101, '', True),
+('BIOL', 101, 'L', 'BIOL', 103, '', True),
 ('BIOL', 152, '', 'BIOL', 151, '', False),
 ('CHEM', 120, 'A', 'CHEM', 115, '', False),
 ('CHEM', 120, 'B', 'CHEM', 120, 'A', False),
-('CHEM', 123, '', 'MATH', 125, '', False),
-('CHEM', 123, '', 'MATH', 150, 'A', False),
+('CHEM', 123, '', 'MATH', 125, '', True),
+('CHEM', 123, '', 'MATH', 150, 'A', True),
 ('CHEM', 125, '', 'CHEM', 120, 'A', False),
 ('CHEM', 125, '', 'CHEM', 123, '', False),
-('GEOL', 101, 'L', 'GEOL', 101, '', False),
-('GEOL', 101, 'L', 'GEOL', 110, 'T', False),
+('GEOL', 101, 'L', 'GEOL', 101, '', True),
+('GEOL', 101, 'L', 'GEOL', 110, 'T', True),
 ('GEOL', 201, '', 'GEOL', 101, 'L', False),
 ('GEOL', 201, '', 'GEOL', 102, '', False),
-('GEOL', 201, 'L', 'GEOL', 201, '', False),
+('GEOL', 201, 'L', 'GEOL', 201, '', True),
 ('MATH', 250, 'A', 'MATH', 150, 'B', False),
 ('MATH', 250, 'B', 'MATH', 250, 'A', False),
 ('PHYS', 225, '', 'MATH', 150, 'A', False),
-('PHYS', 225, 'L', 'PHYS', 225, '', False),
+('PHYS', 225, 'L', 'PHYS', 225, '', True),
 ('PHYS', 226, '', 'MATH', 150, 'B', False),
 ('PHYS', 226, '', 'PHYS', 225, '', False),
-('PHYS', 226, 'L', 'PHYS', 226, '', False),
+('PHYS', 226, 'L', 'PHYS', 226, '', True),
 ('PHYS', 227, '', 'PHYS', 226, '', False),
-('PHYS', 227, 'L', 'PHYS', 227, '', False),
+('PHYS', 227, 'L', 'PHYS', 227, '', True),
 ('CPSC', 254, '', 'CPSC', 131, '', False),
 ('CPSC', 301, '', 'CPSC', 131, '', False),
 ('CPSC', 349, '', 'CPSC', 131, '', False),
@@ -229,7 +230,6 @@ INSERT INTO COURSEPREREQ (COURSEDEPT, COURSENUM, COURSELETTER, PREREQDEPT, PRERE
 ('MATH', 370, '', 'CPSC', 121, '', False);
 
 
-
 #QUERIES
 
 #LIST ALL COURSES AND THEIR PREREQUISITES
@@ -246,6 +246,12 @@ SELECT * FROM COURSEPREREQ AS P
 WHERE P.PREREQDEPT = 'CPSC' AND P.PREREQNUM = 131 AND P.PREREQCOURSELETTER = '';
 
 #LIST ALL COURSES 2 CLASSES ABOVE SPECIFIED
+
 SELECT * FROM COURSEPREREQ AS CP JOIN
 (SELECT COURSEDEPT AS CD, COURSENUM AS CN , PREREQCOURSELETTER AS PN FROM COURSEPREREQ AS P
 WHERE P.PREREQDEPT = 'CPSC' AND P.PREREQNUM = 131 AND P.PREREQCOURSELETTER = '') AS FP ON CP.PREREQDEPT = CD AND CP.PREREQNUM = CN AND CP.PREREQCOURSELETTER = PN;
+
+#LIST ALL UNDERGRAD CLASSES AVAILABLE FOR GRAD CREDIT
+SELECT * FROM COURSE
+WHERE GRADCREDIT = TRUE;
+
