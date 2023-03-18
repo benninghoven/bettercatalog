@@ -5,6 +5,8 @@ services:
     build: ./frontend
     ports:
       - "3000:3000"
+    depends_on:
+      - api
   api:
     build: ./api
     ports:
@@ -12,13 +14,6 @@ services:
     depends_on:
       - database
   database:
-    image: mysql:latest
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: mydatabase
-    volumes:
-      - db-data:/var/lib/mysql
-
-volumes:
-  db-data:
-
+    build: ./database
+    ports:
+      - "1434:1434"
