@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # must be lowercase!
-NAME="bettercatalog"
+NAME="bettercatalog_database"
 
 IMAGE=$NAME"_image"
 CONTAINER=$NAME"_container"

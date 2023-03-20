@@ -1,11 +1,15 @@
-FROM mysql:latest
+# Use an official MySQL runtime as a parent image
+FROM mysql
 
+# Set the root password for MySQL
 ENV MYSQL_ROOT_PASSWORD=root
 
-COPY ./sqlstart.sh /docker-entrypoint-initdb.d/
+# build the db
 COPY ./create.sql /docker-entrypoint-initdb.d/
 
-RUN ["/docker-entrypoint-initdb.d/sqlstart.sh"]
+# Expose port 3306 for MySQL
+EXPOSE 3306
 
-
+# Run the command to start the MySQL server
+CMD ["mysqld"]
 
