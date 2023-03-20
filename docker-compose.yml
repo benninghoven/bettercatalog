@@ -16,4 +16,6 @@ services:
   database:
     build: ./database
     ports:
-      - "1434:1434"
+      - "3006:3006"
+    volumes:
+      - ./database/create.sql:/docker-entrypoint-initdb.d/create.sql

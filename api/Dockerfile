@@ -13,4 +13,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application code to the container
 COPY . .
 
-CMD ["python3","main.py"]
+EXPOSE 5000
+
+# Set environment variables
+ENV FLASK_APP=main.py
+ENV FLASK_ENV=production
+
+CMD ["flask", "run", "--host=0.0.0.0"]
