@@ -19,6 +19,7 @@ fi
 docker run -it \
     -p 3000:3000 \
     -v "$(pwd)"/src:/app/src \
+    -v "$(pwd)"/public:/app/public \
     --name $CONTAINER \
     $IMAGE
 

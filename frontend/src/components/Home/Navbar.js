@@ -6,8 +6,9 @@ const Navbar = () => {
     <nav className={CSS.navbar}>
       <ul>
         <li>Home</li>
-        <li>Contact</li>
-        <li>Fullerton</li>
+        <li>Courses</li>
+        <li>Events</li>
+        <li>About</li>
       </ul>
     </nav>
   );

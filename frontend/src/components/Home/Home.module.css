@@ -2,20 +2,70 @@
 
 .header {
   background-color: #1B263B;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #e0e1dd;
+  width: 100%;
+  height: 100%;
 }
 
-.navbar { /*FIXME*/
-  background-color: #0d1b2a;
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.navbar li {
+  display: inline-block;
+  padding: 10px;
+  color: #fff;
+}
+
+.navbar li:hover {
+  background-color: #555;
+}
+
+.navbar li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.navbar li a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.logo {
   display: flex;
-  flex-direction: row;
-  font-size: calc(10px + 2vmin);
-  color: #e0e1dd;
-
+  align-items: center;
 }
+
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15rem; /* set to the desired width */
+  height: 10rem; /* set to the desired height */
+  border-radius: 2rem; /* set to the desired border radius */
+  background-color: white; /* set to the desired background color */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* add a subtle shadow */
+  padding: 0rem;
+  margin: 2rem;
+}
+
+.logo img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
