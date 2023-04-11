@@ -1,15 +1,23 @@
 #required packages (use pip): mysql, mysql-connector, mysql-connector-python-rf, mysql-connector-python
 import mysql.connector
 import sys
+import json
+
 
 #database connection
 db = mysql.connector.connect(
     host="127.0.0.1",
     user="root",
-    password="PASSWORD PLACEHOLDER",
+    password="MySQLWorkbench",
     database="COURSECATALOG"
 )
 cursor = db.cursor(prepared=True)
+
+#CLA[1] = number of steps to preform, CLA[2] is dept code, CLA[3] is course num, CLA[4] is course letter
+numSteps = int(sys.argv[1]) if len(sys.argv) > 1 else 1     #Note: number less than 1 are function the same as 1 does
+queryVals = [sys.argv[2], sys.argv[3], sys.argv[4][:1]] if len(sys.argv) > 4 else ([sys.argv[2], sys.argv[3]] if len(sys.argv) > 3 else ['CPSC', 131])
+hasLetter = True if len(sys.argv) > 4 else False
+#default run with no CLAs is 1 step and ['CPSC', 131]
 
 
 #functions
@@ -48,9 +56,20 @@ def RecursiveSearch(inputlist, currStep):
                         print(i[0] + ' ' + str(i[1]) + i[2])
 
 #shows an indented view of the classes 
-def RecursiveSearchFormattedOutput(input, currStep=1, printInput=True, hasCourseLetter=False):
-    if printInput:
-        print('\t' * (currStep-1) + input[0] + ' ' + str(input[1]) + input[2] if len(input) > 2 else '')
+def RecursiveSearchFormattedOutput(input, currStep=1, FirstRun=True, hasCourseLetter=False):
+    
+    if FirstRun:
+        print(input[0] + ' ' + str(input[1]) + input[2] if len(input) > 2 else input[0] + ' ' + str(input[1]))      #comment out to remove display
+        
+        #tree set up
+        global root
+        global currentNode
+        root = dict()
+        root = {queryVals[0] + ' ' + str(queryVals[1]) + queryVals[2] if len(queryVals) > 2 else\
+                queryVals[0] + ' ' + str(queryVals[1]): dict()}
+        
+        currentNode = root
+
     
     #hasLetter already calculated in the recursive call
     if hasLetter:
@@ -60,31 +79,44 @@ def RecursiveSearchFormattedOutput(input, currStep=1, printInput=True, hasCourse
         query = "SELECT * FROM COURSEPREREQ AS P WHERE P.PREREQDEPT = %s AND P.PREREQNUM = %s AND P.PREREQCOURSELETTER = '';"
         cursor.execute(query, input[:2])
     result = cursor.fetchall()
+    
+    cNode = currentNode #due to recursive calls you need a way to go back up to last level
 
     for i in result:
         if i != []:
-            print('\t' * currStep + i[0] + ' ' + str(i[1]) + i[2] if len(i) > 2 else '')
+            currentNode = cNode
+            newNode = dict()
+
+            *_, last = iter(currentNode)
+            currentNode[last].update({i[0] + ' ' + str(i[1]) + i[2]: dict()})
+            #print(root)
+            newNode = currentNode[last]#[i[0] + ' ' + str(i[1]) + i[2]]
+            currentNode = newNode
+
+            print('\t' * currStep + i[0] + ' ' + str(i[1]) + i[2] if len(i) > 2 else '')    #comment out to remove display
             if currStep < numSteps:
                 RecursiveSearchFormattedOutput(i, currStep+1, False, False if len(i) < 3 else True)
 
-
-#CLA[1] = number of steps to preform, CLA[2] is dept code, CLA[3] is course num, CLA[4] is course letter
-numSteps = int(sys.argv[1]) if len(sys.argv) > 1 else 1     #Note: number less than 1 are function the same as 1 does
-queryVals = [sys.argv[2], sys.argv[3], sys.argv[4][:1]] if len(sys.argv) > 4 else ([sys.argv[2], sys.argv[3]] if len(sys.argv) > 3 else ['CPSC', 131])
-hasLetter = True if len(sys.argv) > 4 else False
-#default run with no CLAs is 1 step and ['CPSC', 131]
 
 
 print(f"Searching through {numSteps} levels of postrequisites using {queryVals}\n")
 #just get (arg1) layer of classes above specified:
 RecursiveSearch([queryVals,], 1)
 #because this /\ is a one function recursive system, the input needs to be a nested list to work correctly
-print('\n\nNow showing the formatted output:\n')
+print('\n\nNow showing the formatted output from the tree:\n')
 
 #get all classes up to (arg1) layers abovein a formatted, indented print
+
 RecursiveSearchFormattedOutput(queryVals, 1, True, hasLetter)
 
+#except:
+#    print("CurrnetNode", currentNode)
 
+print(json.dumps(root))
+#t.printPOT(t, root)
+
+#print("test json dump to be passed to front-end")
+#implement here
 
 #tidying up
 cursor.close()
