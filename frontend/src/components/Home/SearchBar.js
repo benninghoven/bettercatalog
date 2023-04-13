@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import CSS from './ClassSearch.module.css';
+import CSS from './SearchBar.module.css';
 
-const ClassSearch = ({ onSearch }) => {
+const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleInputChange = (event) => {
@@ -13,7 +13,7 @@ const ClassSearch = ({ onSearch }) => {
   };
 
   return (
-    <div className={CSS.classSearch}>
+    <div className={CSS.searchBar}>
       <input
         type="text"
         placeholder="Search for a class..."
@@ -25,5 +25,5 @@ const ClassSearch = ({ onSearch }) => {
   );
 };
 
-export default ClassSearch;
+export default SearchBar;
 

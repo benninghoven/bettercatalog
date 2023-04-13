@@ -1,4 +1,4 @@
-.classSearch {
+.searchBar{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -6,7 +6,7 @@
   margin-bottom: 20px;
 }
 
-.classSearch input {
+.searchBar input {
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -14,7 +14,7 @@
   width: 300px;
 }
 
-.classSearch button {
+.searchBar button {
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
@@ -28,7 +28,7 @@
   cursor: pointer;
 }
 
-.classSearch button:hover {
+.searchBar button:hover {
   background-color: #3e8e41;
 }
 

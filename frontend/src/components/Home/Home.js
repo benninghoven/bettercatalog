@@ -1,9 +1,9 @@
-import HomeCSS from "./Home.module.css"
+import CSS from "./Home.module.css"
 
 // components
-import Navbar from './Navbar';
+import Navbar from '../Navbar/Navbar';
 import ClassTree from './ClassTree.js';
-import ClassSearch from './ClassSearch';
+import SearchBar from './SearchBar';
 
 
 // hooks
@@ -22,11 +22,11 @@ function Home() {
   return (
     <div className="Home">
         <Navbar />
-      <header className={HomeCSS.header}>
-             <div className={HomeCSS.logo}>
+      <header className={CSS.header}>
+             <div className={CSS.logo}>
                 <img src={process.env.PUBLIC_URL + '/logo.png'} alt="better catalog" />
             </div>
-        <ClassSearch onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} />
         <ClassTree />
 
       </header>

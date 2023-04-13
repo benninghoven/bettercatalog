@@ -1,7 +1,6 @@
 /* https://coolors.co/0d1b2a-1b263b-415a77-778da9-e0e1dd */
 
 .header {
-  background-color: #1B263B;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,38 +11,6 @@
   height: 100%;
 }
 
-.navbar {
-  background-color: #333;
-  overflow: hidden;
-}
-
-.navbar ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-
-.navbar li {
-  display: inline-block;
-  padding: 10px;
-  color: #fff;
-}
-
-.navbar li:hover {
-  background-color: #555;
-}
-
-.navbar li a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-.navbar li a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
 
 .logo {
   display: flex;
