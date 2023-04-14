@@ -16,6 +16,19 @@ import useFetchFromDB from './hooks/fetchApi/useFetchFromDB'
 //return <p key={course['DEPTCODE'] + course['COURSENUM'] + course['COURSELETTER']}>{course['DEPTCODE']} {course['COURSENUM']} {course['COURSELETTER']}</p>
 //}) : <></>
 //}
+//
+const classes = [
+  'CPSC 123',
+  'CPSC 456',
+  'CPSC 789',
+  'CPSC 234',
+  'CPSC 567',
+  'CPSC 890',
+  'CPSC 321',
+  'CPSC 654',
+  'CPSC 987',
+  'CPSC 432'
+];
 
 function App() {
   // hook to retrieve data from api
@@ -30,7 +43,7 @@ function App() {
     <div>
       <header className ={CSS.header}>
       <Navbar />
-      <SearchBar/>
+      <SearchBar classes ={classes} onSearch={handleSearch} />
       </header>
     </div>
   );
