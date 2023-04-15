@@ -1,11 +1,28 @@
 import React, { useState } from 'react';
 import CSS from './SearchBar.module.css';
 
+import ClassVisualization from '../ClassVisualization/ClassVisualization.js'
 
-const SearchBar = ({ classes, onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+// DJB - Pull all classes from DB
+const classes = [
+  'CPSC 456',
+  'CPSC 789',
+  'CPSC 234',
+  'CPSC 567',
+  'CPSC 890',
+  'CPSC 321',
+  'CPSC 654',
+  'CPSC 987',
+  'CPSC 432'
+];
+
+
+function SearchBar(props) {
+    const {possibleCourses, onPossibleCoursesChange} = props;
+    const [searchTerm, setSearchTerm] = useState('');
 
   const handleInputChange = (event) => {
+
     const searchTerm = event.target.value;
     setSearchTerm(searchTerm);
     console.log('User typed:', searchTerm);
@@ -14,50 +31,28 @@ const SearchBar = ({ classes, onSearch }) => {
       return className.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
-    if (possibleClassesArray.length){
-        console.log('PossibleClasses:', possibleClassesArray);
+    if (possibleClassesArray.length && searchTerm.length > 0){
+        onPossibleCoursesChange(possibleClassesArray);
     }
-    else{
-        console.log('No PossibleClasses:');
-    }
+      else{
+        onPossibleCoursesChange([]);
+      }
+
   };
 
-
-  const handleSearch = () => {
-    onSearch(searchTerm);
-    console.log('HandleSearch:', searchTerm);
-    console.log('User Clicked Search');
- 
-  };
-    const Dropdown = ({ options }) => {
-      return (
-        <select>
-          {options.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-      );
-    };
-
-    // DJB FIXME: classes are fake for now
+  // DJB classes are fake for now
   return (
-    <div>
-        <div className={CSS.searchBar}>
-            <input
-              type="text"
-              placeholder="Search for a class..."
-              value={searchTerm}
-              onChange={handleInputChange}
-            />
-          <button onClick={handleSearch}>Search</button>
-        </div>
-        {classes.length > 0 && (
-        <Dropdown options={classes} />
-      )}
-    </div>
+      <div className={CSS.searchBar}>
+        <input
+          type="text"
+          placeholder="Search for a class..."
+          value={searchTerm}
+          onChange={handleInputChange}
+        />
+      </div>
   );
 };
 
 export default SearchBar;
+
+

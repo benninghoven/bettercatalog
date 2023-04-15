@@ -5,3 +5,16 @@
   flex-direction: column;
   min-height: 100vh;
 }
+
+.inputarea {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: center;
+    text-align: center;
+    margin-top: .5rem;
+}
+
+.searcharea {
+  border: .5rem solid #fff;
+  border-radius: .7rem;
+}
