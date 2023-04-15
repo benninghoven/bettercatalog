@@ -1,39 +1,12 @@
 import React from 'react';
-import CSS from "./Home.module.css"
+import CSS from './ClassVisualization.module.css'
 
-const ClassTree = () => {
+const ClassVisualization= () => {
   return (
-    <div className={CSS.classTree}>
-      <ul>
-        <li>
-          Class A
-          <ul>
-            <li>Class B</li>
-            <li>
-              Class C
-              <ul>
-                <li>Class D</li>
-                <li>Class E</li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li>Class F</li>
-        <li>
-          Class G
-          <ul>
-            <li>Class H</li>
-            <li>
-              Class I
-              <ul>
-                <li>Class J</li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
+    <div>
+      Hi
     </div>
   );
 };
 
-export default ClassTree;
+export default ClassVisualization;
