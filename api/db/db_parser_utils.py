@@ -20,3 +20,11 @@ def fetchAllCoursesParser(courses):
         response_arr.append(courses_dict);
 
     return response_arr
+
+def coursesToArray(courses):
+    response_arr = []
+
+    for course in courses:
+        response_arr.append(" ".join([str(course[0]), str(course[1])]))
+
+    return response_arr

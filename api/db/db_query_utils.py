@@ -9,11 +9,11 @@ def fetchAllCourses():
     
     # execute sql and fetch results
     # TODO: db execute error check
-    cursor.execute("SELECT * FROM COURSE")
+    cursor.execute("SELECT DEPTCODE, COURSENUM FROM COURSE")
     data = cursor.fetchall()
 
     # parse execute result and disconnect from db
-    data_dict = fetchAllCoursesParser(data)
+    data_dict = coursesToArray(data)
     closeDB(db)
 
     return data_dict
