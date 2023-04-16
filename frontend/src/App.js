@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import CSS from './App.module.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Navbar from './components/Navbar/Navbar.js';
 import SearchBar from './components/SearchBar/SearchBar.js';
-import SearchButton from './components/SearchButton/SearchButton.js';
 import DropDown from './components/DropDown/DropDown.js';
+import SearchButton from './components/SearchButton/SearchButton.js';
+import ClassVisualization from './components/ClassVisualization/ClassVisualization.js';
 
 import useFetchFromDB from './hooks/fetchApi/useFetchFromDB'
 // <img src={process.env.PUBLIC_URL + '/logo.png'} alt="better catalog" />
@@ -23,19 +24,16 @@ import useFetchFromDB from './hooks/fetchApi/useFetchFromDB'
 // how to use: 
 //const [data, loading, error] = useFetchFromDB();
 //
-const courses = [
-  'CPSC 456',
-  'CPSC 789',
-  'CPSC 234',
-  'CPSC 567',
-  'CPSC 890',
-  'CPSC 321',
-  'CPSC 654',
-  'CPSC 987',
-  'CPSC 432'
-];
 
 function App() {
+    const [courseNames, setCourseNames] = useState([]);
+
+    const getCourseNames = async () => {
+        const response = await fetch("http://127.0.0.1:5000/fetchall-courses");
+        const data = await response.json();
+        setCourseNames(data)
+    }
+    getCourseNames();
 
     const [possibleCourses, setPossibleCourses] = useState([]);
 
@@ -49,11 +47,12 @@ function App() {
                 <Navbar />
                 <div className = {CSS.inputarea}>
                     <div className = {CSS.searcharea}>
-                        <SearchBar possibleCourses={possibleCourses} onPossibleCoursesChange={handlePossibleCoursesChange} />
+                        <SearchBar possibleCourses={possibleCourses} onPossibleCoursesChange={handlePossibleCoursesChange} courses={courseNames}/>
                         <DropDown possibleCourses={possibleCourses} />
                     </div>
                 <SearchButton />
                 </div>
+                <ClassVisualization />
             </header>
         </div>
   );

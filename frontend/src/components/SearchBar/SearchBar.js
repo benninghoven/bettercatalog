@@ -4,6 +4,7 @@ import CSS from './SearchBar.module.css';
 import ClassVisualization from '../ClassVisualization/ClassVisualization.js'
 
 // DJB - Pull all classes from DB
+//
 const classes = [
   'CPSC 456',
   'CPSC 789',
@@ -18,7 +19,7 @@ const classes = [
 
 
 function SearchBar(props) {
-    const {possibleCourses, onPossibleCoursesChange} = props;
+    const {possibleCourses, onPossibleCoursesChange, courses} = props;
     const [searchTerm, setSearchTerm] = useState('');
 
   const handleInputChange = (event) => {
@@ -27,7 +28,7 @@ function SearchBar(props) {
     setSearchTerm(searchTerm);
     console.log('User typed:', searchTerm);
 
-    const possibleClassesArray = classes.filter((className) => {
+    const possibleClassesArray = courses.filter((className) => {
       return className.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
