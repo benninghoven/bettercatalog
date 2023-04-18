@@ -26,12 +26,14 @@ import useFetchFromDB from './hooks/fetchApi/useFetchFromDB'
 
 function App() {
     const [courses, setCourses] = useState(false);
+    const [btnClicked, setBtnClicked] = useState(false);
     const [courseNames, setCourseNames] = useState([]);
 
     const getCourses = async () => {
         const response = await fetch("http://127.0.0.1:5000/fetchall-courses");
         const data = await response.json();
-        setCourses(data)
+        setCourses(data);
+        setBtnClicked(!btnClicked);
     }
 
     const [possibleCourses, setPossibleCourses] = useState([]);
@@ -53,7 +55,7 @@ function App() {
                 </div>
                 <ClassVisualization />
                 <button onClick={getCourses}>get courses</button>
-                {courses && 
+                { btnClicked && courses && 
                     courses.map(x => <div key={x} className={CSS.courses}>{x}</div>)    
                 }
             </header>
