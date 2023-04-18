@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import CSS from './App.module.css';
 import React, { useState, useEffect } from 'react';
 
@@ -26,14 +25,14 @@ import useFetchFromDB from './hooks/fetchApi/useFetchFromDB'
 //
 
 function App() {
+    const [courses, setCourses] = useState(false);
     const [courseNames, setCourseNames] = useState([]);
 
-    const getCourseNames = async () => {
+    const getCourses = async () => {
         const response = await fetch("http://127.0.0.1:5000/fetchall-courses");
         const data = await response.json();
-        setCourseNames(data)
+        setCourses(data)
     }
-    getCourseNames();
 
     const [possibleCourses, setPossibleCourses] = useState([]);
 
@@ -53,6 +52,10 @@ function App() {
                 <SearchButton />
                 </div>
                 <ClassVisualization />
+                <button onClick={getCourses}>get courses</button>
+                {courses && 
+                    courses.map(x => <div key={x} className={CSS.courses}>{x}</div>)    
+                }
             </header>
         </div>
   );

@@ -19,7 +19,7 @@ def getDBCursor(db_cnx):
     :returns: db cursor
     """
     if db_cnx:
-        return db_cnx.cursor()
+        return db_cnx.cursor(prepared=True)
     return None
 
 def getErrorInfo(err_exception, /):
