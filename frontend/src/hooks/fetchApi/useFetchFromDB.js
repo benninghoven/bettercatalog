@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 
-function useFetchFromDB() {
+function useFetchAll() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -17,8 +17,11 @@ function useFetchFromDB() {
                 setData(response_json);
                 controller = null;
             } catch(err) {
-                console.log(err)
-                setError(err);
+                // console.log(err.code)
+                if (!err.code == 20) {
+                    // ignore user aborted request error
+                    setError(err.message);
+                }
             } finally {
                 setLoading(false);
             }
@@ -30,10 +33,10 @@ function useFetchFromDB() {
             controller?.abort();
         }
 
-    // run effect once and clean up oce on mount
+    // run effect once and clean up once on mount
     }, []);
 
     return [data, loading, error]
 }
 
-export default useFetchFromDB
+export default useFetchAll

@@ -7,34 +7,13 @@ import DropDown from './components/DropDown/DropDown.js';
 import SearchButton from './components/SearchButton/SearchButton.js';
 import ClassVisualization from './components/ClassVisualization/ClassVisualization.js';
 
-import useFetchFromDB from './hooks/fetchApi/useFetchFromDB'
-// <img src={process.env.PUBLIC_URL + '/logo.png'} alt="better catalog" />
-    
-// DJB - Moved these around, don't know where they go
-//{loading ? "loading..." : <></>}
-//{data ?
-//data.map(function(course) {
-//return <p key={course['DEPTCODE'] + course['COURSENUM'] + course['COURSELETTER']}>{course['DEPTCODE']} {course['COURSENUM']} {course['COURSELETTER']}</p>
-//}) : <></>
-//}
-// hook to retrieve data from api
-//    -> data will be populated on mount of the Home component
-//    -> if [data, loading, error] states change, the Home component will rerender
-// how to use: 
-//const [data, loading, error] = useFetchFromDB();
-//
+import useFetchAll from './hooks/fetchApi/useFetchFromDB'
 
 function App() {
-    const [courses, setCourses] = useState(false);
+    const [data, loading, error] = useFetchAll();
     const [btnClicked, setBtnClicked] = useState(false);
-
-    const getCourses = async () => {
-        const response = await fetch("http://127.0.0.1:5000/fetchall-courses"); // YE - MAKE SURE THE LOCAL IP AND PORT IS CORRECT
-        const data = await response.json();
-        setCourses(data);
-        setBtnClicked(!btnClicked);
-    }
-
+    
+    const [courseNames, setCourseNames] = useState();
     const [possibleCourses, setPossibleCourses] = useState([]);
 
     const handlePossibleCoursesChange = (newData) => {
@@ -53,9 +32,11 @@ function App() {
                 <SearchButton />
                 </div>
                 <ClassVisualization />
-                <button onClick={getCourses}>get courses</button>
-                { btnClicked && courses && 
-                    courses.map(x => <div key={x} className={CSS.courses}>{x}</div>)    
+                <button onClick={() => setBtnClicked(!btnClicked)}>get courses</button>
+                {loading && <div>loading...</div>}
+                {error && <div>error: {error}</div>}
+                { btnClicked && data && 
+                    data.map(x => <div key={x} className={CSS.courses}>{x}</div>)    
                 }
             </header>
         </div>
