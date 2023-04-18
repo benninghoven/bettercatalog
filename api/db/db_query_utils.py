@@ -9,7 +9,7 @@ def fetchAllCourses():
     
     # execute sql and fetch results
     # TODO: db execute error check
-    cursor.execute("SELECT DEPTCODE, COURSENUM, COURSENAME FROM COURSE")
+    cursor.execute("SELECT DEPTCODE, COURSENUM, COURSELETTER, COURSENAME FROM COURSE")
     data = cursor.fetchall()
 
     # parse execute result and disconnect from db

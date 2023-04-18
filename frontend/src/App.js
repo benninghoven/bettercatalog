@@ -27,10 +27,9 @@ import useFetchFromDB from './hooks/fetchApi/useFetchFromDB'
 function App() {
     const [courses, setCourses] = useState(false);
     const [btnClicked, setBtnClicked] = useState(false);
-    const [courseNames, setCourseNames] = useState([]);
 
     const getCourses = async () => {
-        const response = await fetch("http://127.0.0.1:5000/fetchall-courses");
+        const response = await fetch("http://127.0.0.1:5000/fetchall-courses"); // YE - MAKE SURE THE LOCAL IP AND PORT IS CORRECT
         const data = await response.json();
         setCourses(data);
         setBtnClicked(!btnClicked);

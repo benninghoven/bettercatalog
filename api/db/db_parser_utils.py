@@ -25,6 +25,6 @@ def coursesToArray(courses):
     response_arr = []
 
     for course in courses:
-        response_arr.append(" ".join([str(course[0]), str(course[1]), " - ", str(course[2])]))
+        response_arr.append(" ".join([str(course[0]), str(course[1]) + str(course[2]), " - ", str(course[3])]))
 
     return response_arr
