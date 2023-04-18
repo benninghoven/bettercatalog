@@ -17,6 +17,7 @@
     font-size: medium;
 
     border: none;
+    border-radius: 5px;
     outline: none;
     -webkit-appearance: none;
     -moz-appearance: none;

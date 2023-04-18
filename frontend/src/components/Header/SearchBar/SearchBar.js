@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CSS from './SearchBar.module.css';
 
-import ClassVisualization from '../ClassVisualization/ClassVisualization.js'
+import ClassVisualization from '../../CoursesView/ClassVisualization/ClassVisualization.js'
 
 // DJB - Pull all classes from DB
 //

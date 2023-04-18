@@ -1,4 +1,7 @@
+# TODO: LOG ERROR AND WARNINGS TO LOG FILE
+
 from config import *
+import logging
 
 import mysql.connector
 from mysql.connector import errorcode

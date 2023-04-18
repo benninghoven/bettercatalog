@@ -1,0 +1,11 @@
+.header {
+    flex-direction: column;
+}
+  
+.inputarea {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: center;
+    text-align: center;
+    margin-top: .5rem;
+}

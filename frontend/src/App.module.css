@@ -1,17 +1,11 @@
 /* https://coolors.co/0d1b2a-1b263b-415a77-778da9-e0e1dd */
 
-.header {
+.body {
   background-color: #19376D;
-  flex-direction: column;
   min-height: 100vh;
-}
+  height: 100%;
 
-.inputarea {
-    display: flex; 
-    flex-direction: row; 
-    justify-content: center;
-    text-align: center;
-    margin-top: .5rem;
+  overflow: hidden;
 }
 
 .searcharea {

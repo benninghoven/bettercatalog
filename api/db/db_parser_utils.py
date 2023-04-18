@@ -1,4 +1,4 @@
-def fetchAllCoursesParser(courses):
+def coursesToArrayOfDict(courses):
     """
     :params: tuple courses: tuple of courses
     :returns: dictionary of courses

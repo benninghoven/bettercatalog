@@ -1,44 +1,38 @@
-import CSS from './App.module.css';
+// YE - NODE MODULES
 import React, { useState, useEffect } from 'react';
 
-import Navbar from './components/Navbar/Navbar.js';
-import SearchBar from './components/SearchBar/SearchBar.js';
-import DropDown from './components/DropDown/DropDown.js';
-import SearchButton from './components/SearchButton/SearchButton.js';
-import ClassVisualization from './components/ClassVisualization/ClassVisualization.js';
+// YE - COMPONENETS IMPORTS
+import Header from "./components/Header/Header"
+import CoursesView from './components/CoursesView/CoursesView';
+import ClassVisualization from './components/CoursesView/ClassVisualization/ClassVisualization.js';
 
-import useFetchAll from './hooks/fetchApi/useFetchFromDB'
+// YE - CSS IMPORTS
+import MainCss from './App.module.css';
+
+// YE - HOOKS IMPORTS
+import APITestButton from './components/APITestButton/APITestButton';
 
 function App() {
-    const [data, loading, error] = useFetchAll();
     const [btnClicked, setBtnClicked] = useState(false);
-    
-    const [courseNames, setCourseNames] = useState();
-    const [possibleCourses, setPossibleCourses] = useState([]);
 
-    const handlePossibleCoursesChange = (newData) => {
-        setPossibleCourses(newData);
-    }
-
+    /* YE - arranged components as follows:
+        HEADER COMPONENT
+            includes:
+                Navbar
+                SearchBar
+                SearchButton
+                DropDown
+        COURSESVIEW COMPONENT
+            includes:
+                ClassVisualization - legacy (removed for new frontend)
+    */
+        
     return (
-        <div>
-            <header className ={CSS.header}>
-                <Navbar />
-                <div className = {CSS.inputarea}>
-                    <div className = {CSS.searcharea}>
-                        <SearchBar possibleCourses={possibleCourses} onPossibleCoursesChange={handlePossibleCoursesChange} courses={courseNames}/>
-                        <DropDown possibleCourses={possibleCourses} />
-                    </div>
-                <SearchButton />
-                </div>
-                <ClassVisualization />
-                <button onClick={() => setBtnClicked(!btnClicked)}>get courses</button>
-                {loading && <div>loading...</div>}
-                {error && <div>error: {error}</div>}
-                { btnClicked && data && 
-                    data.map(x => <div key={x} className={CSS.courses}>{x}</div>)    
-                }
-            </header>
+        <div className={MainCss.body}>
+            <Header></Header>
+            <CoursesView></CoursesView>
+            {/* <ClassVisualization /> */}
+            <APITestButton btnClicked={btnClicked} setBtn={setBtnClicked}></APITestButton>
         </div>
   );
 }

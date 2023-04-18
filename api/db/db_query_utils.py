@@ -9,6 +9,23 @@ def fetchAllCourses():
     
     # execute sql and fetch results
     # TODO: db execute error check
+    cursor.execute("SELECT DEPTCODE, COURSENUM, COURSELETTER, COURSENAME, COURSEDESCRIPTION, CREDITS, GRADCREDIT, MAJMINREQ FROM COURSE")
+    data = cursor.fetchall()
+
+    # parse execute result and disconnect from db
+    data_dict = coursesToArrayOfDict(data)
+    closeDB(db)
+
+    return data_dict
+
+def fetchAllCoursesToArray():
+    # connect to DB and get connection cursor
+    # TODO: db connection error check
+    db = connectDB()
+    cursor = getDBCursor(db)
+    
+    # execute sql and fetch results
+    # TODO: db execute error check
     cursor.execute("SELECT DEPTCODE, COURSENUM, COURSELETTER, COURSENAME FROM COURSE")
     data = cursor.fetchall()
 
