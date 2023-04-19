@@ -6,9 +6,7 @@ from db import *
 from flask import Response
 import json
 
-@app.route('/fetchall-test', methods=["GET"])
+@app.route('/fetchall-test', methods=['GET'])
 def fetchAllTest():
     courses = fetchAllCoursesToArray()
-    print(courses)
-
     return Response(json.dumps(courses), status=200, content_type='application/json')

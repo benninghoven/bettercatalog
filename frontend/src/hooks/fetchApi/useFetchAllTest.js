@@ -19,7 +19,7 @@ function useFetchAllTest() {
             } catch(err) {
                 console.log(err)
                 // ignore error code 20
-                if (err.code == 20) return;
+                if (err.code === 20) return;
                 if (err instanceof TypeError) setError({message: err.message, type: "type error"})
                 setError({message: err.message, type: "not specified"});
             } finally {
