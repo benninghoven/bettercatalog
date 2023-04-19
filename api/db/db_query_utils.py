@@ -36,14 +36,13 @@ def fetchAllCoursesToArray():
     return data_dict
 
 def fetchCoursePrereq(course_dept, course_num, course_letter, prereq_level):
-    print()
     db = connectDB()
     cursor = getDBCursor(db)
     query = "SELECT PREREQDEPT, PREREQNUM, PREREQCOURSELETTER FROM COURSEPREREQ AS PR WHERE PR.COURSEDEPT=%s AND PR.COURSENUM LIKE %s AND PR.COURSELETTER LIKE %s;"
-    print("query: " + query, (course_dept, course_num, course_letter))
+    # print("query: " + query, (course_dept, course_num, course_letter))
     cursor.execute(query, (course_dept, course_num, course_letter))
     data = cursor.fetchall()
-    print("query result: ", data)
+    # print("query result: ", data)
     closeDB(db)
 
     if len(data) == 0 or not data: return False
@@ -57,7 +56,6 @@ def fetchCoursePrereq(course_dept, course_num, course_letter, prereq_level):
         prereq_course.append(prereq_level)
         courses.append(prereq_course)
 
-    print()
     return courses
 
 def checkDuplicatesAndRemove(course_list_1, course_list_2):
@@ -84,30 +82,21 @@ def fetchCoursePrereqRecursive(course_dept, course_num, course_letter):
 
     :returns: list of courses
     """
-    print()
     # list of courses - result to be returned
     prereqs = list()
 
     # level of the prereq - the lower the number, the more immediate the prereq is
     # for example, if the level is 0, then that course is an immediate prereq to the course provided
     prereq_level = 0
-    
-    # flag to monitor if there are any further prereqs
-    prereq_flag = True
 
     # first query to get immediate prerequisites - if none, return False
     next_prereq_courses = fetchCoursePrereq(course_dept, course_num, course_letter, prereq_level)
-    if not next_prereq_courses or next_prereq_courses == False: return False
+    if next_prereq_courses == False: return False
 
     # append immediate prerequisites to result prereq list
     prereqs.extend(next_prereq_courses)
 
-    # while prereq_flag:
-
-        # prereq_courses_all: all prereq courses of the current list of prereqs being evaluated
-    prereq_courses_all = list()
-
-    # for each prerequisite course of the previous prerequisite course
+    # for each prerequisite course of the current prerequisite course list
     for prereq_course in prereqs:
         # increment prereq_level
         prereq_level+=1
@@ -122,19 +111,10 @@ def fetchCoursePrereqRecursive(course_dept, course_num, course_letter):
         if next_prereq_courses == False:
             prereq_level -= 1
             continue
-        # else
         else:
             # check for duplicates in prereqs
             prereqs, next_prereq_courses = checkDuplicatesAndRemove(prereqs, next_prereq_courses)
-
-            print("current courses: ", prereqs)
-            print("appending: ", next_prereq_courses)
-            # append 
-            # prereq_courses_all.extend(next_prereq_courses)
-
-        # if len(prereq_courses_all) == 0:
-        #     prereq_flag = False
-            prereqs.extend(next_prereq_courses)
+        prereqs.extend(next_prereq_courses)
 
     prereqs = coursePrereqToArrayOfDict(prereqs)
     return prereqs
