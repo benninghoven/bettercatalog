@@ -15,6 +15,6 @@ def fetchPrereqs():
     print("'" + req_course_letter + "'")
 
     courses = fetchCoursePrereqRecursive(req_dept_code, req_course_num, req_course_letter)
-    print(courses)
+    print("prereqs: ", courses)
 
     return Response(json.dumps(courses), status=200, content_type='application/json')

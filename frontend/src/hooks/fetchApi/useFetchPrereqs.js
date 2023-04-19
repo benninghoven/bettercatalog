@@ -26,14 +26,13 @@ const useFetchPrereqs = (course_dept_code, course_num, course_letter) => {
             } finally {
                 setLoading(false);
             }
-
         }
         fetchPrereqs();
 
-        // clean up
-        return () => {
-            // controller?.abort();
-        }
+        // // clean up
+        // return () => {
+        //     // controller?.abort();
+        // }
     }, [])
 
 
