@@ -19,6 +19,8 @@ fi
 docker run -it \
     -p 5000:5000 \
     --name $CONTAINER \
+    --network my_network \
+    --network-alias api \
     $IMAGE
 
 # auto delete container after it ran

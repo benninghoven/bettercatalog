@@ -19,6 +19,8 @@ fi
 docker run -it \
     -p 3306:3306 \
     --name $CONTAINER \
+    --network my_network \
+    --network-alias db \
     $IMAGE
 
 # auto delete container after it ran

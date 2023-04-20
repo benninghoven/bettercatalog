@@ -21,6 +21,8 @@ docker run -it \
     -v "$(pwd)"/src:/app/src \
     -v "$(pwd)"/public:/app/public \
     --name $CONTAINER \
+    --network my_network \
+    --network-alias frontend \
     $IMAGE
 
 # auto delete container after it ran
