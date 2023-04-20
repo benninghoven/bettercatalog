@@ -12,7 +12,7 @@ def connectDB():
     """
     try:
         db = mysql.connector.connect(**db_config)
-        print("connected to db successfully")
+        # print("connected to db successfully")
         return db
     except mysql.connector.Error as err:
         print("ERROR CONNECTING TO DB")
@@ -42,5 +42,5 @@ def closeDB(db):
     """
     :param mysql.connector.connect db: db connection
     """
-    print("closing db")
+    # print("closing db")
     db.close()

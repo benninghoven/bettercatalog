@@ -32,7 +32,7 @@ function App() {
             <Header></Header>
             <CoursesView></CoursesView>
             {/* <ClassVisualization /> */}
-            <APITestButton btnClicked={btnClicked} setBtn={setBtnClicked}></APITestButton>
+            {/* <APITestButton btnClicked={btnClicked} setBtn={setBtnClicked}></APITestButton> */}
         </div>
   );
 }

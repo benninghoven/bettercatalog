@@ -18,7 +18,7 @@
 */
 
 // NODE MODULE IMPORTS
-import React from 'react'
+import {useState} from 'react'
 
 // CUSTOM COMPONENTS IMPORTS:
 import Course from "./Course/Course"
@@ -28,14 +28,25 @@ import useFetchAll from '../../hooks/fetchApi/useFetchAllCourses'
 
 // CSS IMPORTS
 import CoursesViewCss from "./CoursesView.module.css"
+import Search from './Search/Search'
 
 const CoursesView = () => {
     const [data, loading, error] = useFetchAll();
+    const [searchResult, setSearchResult] = useState(false);
+    const [showSearchResult, setShowSearchResult] = useState(false);
 
     return (
-        <div className={CoursesViewCss.body}>
-            {data && data.map(course => <Course key={course.DEPTCODE + course.COURSENUM + course.COURSELETTER} courseData={course}></Course>)}
-        </div>
+        <>
+            {data && <Search courses={data} showSearch={setShowSearchResult} searchResult={searchResult} setResult={setSearchResult}/>}
+            <div className={CoursesViewCss.body}>
+                {/* if not searching and the course list is ready, show original course list */}
+                    {data && !showSearchResult && data.map(course => <Course key={course.DEPTCODE + course.COURSENUM + course.COURSELETTER} courseData={course}></Course>)}
+                    {loading && !showSearchResult && <p>loading...</p>}
+                    {error && !showSearchResult && <p>an error occured...</p>}
+                {/* if searching, show search result */}
+                    {showSearchResult && searchResult.map(course => <Course key={course.DEPTCODE + course.COURSENUM + course.COURSELETTER} courseData={course}></Course>)}
+            </div>
+        </>
     )
 }
 
