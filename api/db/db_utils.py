@@ -15,6 +15,7 @@ def connectDB():
         print("connected to db successfully")
         return db
     except mysql.connector.Error as err:
+        print("ERROR CONNECTING TO DB")
         print(err.msg)
 
 def getDBCursor(db_cnx):
@@ -23,7 +24,8 @@ def getDBCursor(db_cnx):
     """
     if db_cnx:
         return db_cnx.cursor(prepared=True)
-    return None
+    else:
+        print("ERROR GETTING CURSOR")
 
 def getErrorInfo(err_exception, /):
     """

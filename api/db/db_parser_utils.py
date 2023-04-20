@@ -28,3 +28,19 @@ def coursesToArray(courses):
         response_arr.append(" ".join([str(course[0]), str(course[1]) + str(course[2]), " - ", str(course[3])]))
 
     return response_arr
+
+def coursePrereqToArrayOfDict(courses):
+    response_arr = []
+
+    for i, course in enumerate(courses):
+        courses_dict = dict()
+
+        courses_dict['PREREQDEPT'] = course[0]
+        courses_dict['PREREQNUM'] = course[1]
+        courses_dict['PREREQCOURSELETTER'] = course[2]
+        courses_dict['PREREQLEVEL'] = course[3]
+
+
+        response_arr.append(courses_dict);
+
+    return response_arr
