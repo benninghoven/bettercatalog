@@ -13,7 +13,7 @@ db = mysql.connector.connect(
 )
 cursor = db.cursor(prepared=True)
 
-#CLA[1] = number of step to preform, CLA[2] is dept code, CLA[3] is course num, CLA[4] is course letter
+#CLA[1] = number of steps to preform, CLA[2] is dept code, CLA[3] is course num, CLA[4] is course letter
 numSteps = int(sys.argv[1]) if len(sys.argv) > 1 else 1     #Note: number less than 1 are function the same as 1 does
 queryVals = [sys.argv[2], sys.argv[3], sys.argv[4][:1]] if len(sys.argv) > 4 else ([sys.argv[2], sys.argv[3]] if len(sys.argv) > 3 else ['CPSC', 131])
 hasLetter = True if len(sys.argv) > 4 else False
@@ -70,9 +70,9 @@ def RecursiveSearchFormattedOutput(input, currStep=1, FirstRun=True, hasCourseLe
 
     
     #hasLetter already calculated in the recursive call
-    if hasLetter:
+    if hasCourseLetter:
         query = "SELECT * FROM COURSEPREREQ WHERE COURSEPREREQ.COURSEDEPT = %s AND COURSEPREREQ.COURSENUM = %s AND COURSEPREREQ.COURSELETTER = %s;"
-        cursor.execute(query, input)
+        cursor.execute(query, input[:3])
     else:
         query = "SELECT * FROM COURSEPREREQ WHERE COURSEPREREQ.COURSEDEPT = %s AND COURSEPREREQ.COURSENUM = %s AND COURSEPREREQ.COURSELETTER = '';"
         cursor.execute(query, input[:2])
@@ -94,7 +94,7 @@ def RecursiveSearchFormattedOutput(input, currStep=1, FirstRun=True, hasCourseLe
 
             print('\t' * currStep + i[0] + ' ' + str(i[1]) + i[2] if len(i) > 2 else '')    #may be able to remove this if
             if currStep < numSteps:
-                RecursiveSearchFormattedOutput(i, currStep+1, False, True if len(i) > 2 and len(i[2]) != 0 else False)
+                RecursiveSearchFormattedOutput(i, currStep+1, False, True if len(i) > 2 and i[2] != '' else False)
 
 
 
