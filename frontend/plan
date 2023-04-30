@@ -1,8 +1,0 @@
-Navbar -> Hyperlinks to other websites
-
-SearchBar -> Type in class, gives you auto suggestions in dropdowns
-Dropdown -> possible classes that match your input
-
-Search button -> searches DB for class and presents data
-
-Course Visualziation -> Shows a horizontal tree of all the postreqs and prereqs of a class

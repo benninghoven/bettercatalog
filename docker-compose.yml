@@ -1,21 +1,39 @@
-version: '1'
+version: "1.0"
 
 services:
   frontend:
     build: ./frontend
     ports:
       - "3000:3000"
-    depends_on:
-      - api
+    volumes:
+      - "./frontend/src:/app/src"
+      - "./frontend/public:/app/public"
+    networks:
+      - bettercatalog_network
+    hostname: frontend
+    container_name: bettercatalog_frontend
+
   api:
     build: ./api
     ports:
       - "5000:5000"
-    depends_on:
-      - database
+    networks:
+      - bettercatalog_network
+    hostname: api
+    container_name: bettercatalog_api
+
   database:
     build: ./database
     ports:
-      - "3006:3006"
+      - "3306:3306"
     volumes:
-      - ./database/create.sql:/docker-entrypoint-initdb.d/create.sql
+      - "./database/create.sql:/docker-entrypoint-initdb.d/create.sql"
+    networks:
+      - bettercatalog_network
+    hostname: db
+    container_name: bettercatalog_database
+
+networks:
+  bettercatalog_network:
+    driver: bridge
+

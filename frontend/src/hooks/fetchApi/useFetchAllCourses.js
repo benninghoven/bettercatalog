@@ -12,7 +12,7 @@ function useFetchAll() {
             try {
                 setLoading(true);
                 // connect controller with fetch request
-                const response = await fetch('http://0.0.0.0:5000/fetchall-courses', {mode: "cors", signal: controller.signal});
+                const response = await fetch('http://localhost:5000/fetchall-courses', {mode: "cors", signal: controller.signal});
                 const response_json = await response.json();
                 // console.log(response_json);
                 setData(response_json);

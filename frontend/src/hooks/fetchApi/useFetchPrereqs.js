@@ -7,7 +7,6 @@ const useFetchPrereqs = (course_dept_code, course_num, course_letter) => {
 
     useEffect(() => {
         // let controller = new AbortController();
-
         const fetchPrereqs = async () => {
             try {
                 setLoading(true);
@@ -15,7 +14,8 @@ const useFetchPrereqs = (course_dept_code, course_num, course_letter) => {
                 "dept_code=" + course_dept_code + '&' +
                 "course_num=" + course_num + '&' +
                 "course_letter=" + course_letter
-                const response = await fetch(process.env.REACT_APP_API_URL_PREREQS + query_param, {timeout: 10000});
+                const response = await fetch("http://localhost:5000/fetchprereqs" + query_param, {timeout: 10000});
+                //const response = await fetch(process.env.REACT_APP_API_URL_PREREQS + query_param, {timeout: 10000});
                 const data = await response.json();
                 setPrereqs(data);
                 // controller = null;
