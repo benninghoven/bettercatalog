@@ -10,6 +10,7 @@ COPY package*.json ./
 # Install the app's dependencies
 RUN npm install
 RUN npm install react-router-dom --save
+RUN npm install react-select --save
 
 # Copy the rest of the app's files to the container
 COPY . .
