@@ -11,10 +11,11 @@ import MainCss from './App.module.css';
 
 // YE - HOOKS IMPORTS
 import APITestButton from './components/APITestButton/APITestButton';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 function App() {
-    const [btnClicked, setBtnClicked] = useState(false);
-
     /* YE - arranged components as follows:
         HEADER COMPONENT
             includes:
@@ -28,12 +29,12 @@ function App() {
     */
         
     return (
-        <div className={MainCss.body}>
-            <Header></Header>
-            <CoursesView></CoursesView>
-            {/* <ClassVisualization /> */}
-            {/* <APITestButton btnClicked={btnClicked} setBtn={setBtnClicked}></APITestButton> */}
-        </div>
+        <QueryClientProvider client={queryClient}>
+            <div className={MainCss.body}>
+                <Header></Header>
+                <CoursesView></CoursesView>
+            </div>
+        </QueryClientProvider>
   );
 }
 

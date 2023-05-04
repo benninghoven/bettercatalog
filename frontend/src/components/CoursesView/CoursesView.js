@@ -25,15 +25,19 @@ import Course from "./Course/Course"
 
 // CUSTOM HOOK IMPORT
 import useFetchAll from '../../hooks/fetchApi/useFetchAllCourses'
+import { useFetchAllRQ } from '../../hooks/fetchApi/useFetchAllRQ'
 
 // CSS IMPORTS
 import CoursesViewCss from "./CoursesView.module.css"
 import Search from './Search/Search'
 
 const CoursesView = () => {
-    const [data, loading, error] = useFetchAll();
+    // const [data, loading, error] = useFetchAll();
+    const {data, isLoading, isError} = useFetchAllRQ();
     const [searchResult, setSearchResult] = useState(false);
     const [showSearchResult, setShowSearchResult] = useState(false);
+
+    if (data) console.log(data);
 
     return (
         <>
@@ -41,8 +45,8 @@ const CoursesView = () => {
             <div className={CoursesViewCss.body}>
                 {/* if not searching and the course list is ready, show original course list */}
                     {data && !showSearchResult && data.map(course => <Course key={course.DEPTCODE + course.COURSENUM + course.COURSELETTER} courseData={course}></Course>)}
-                    {loading && !showSearchResult && <p>loading...</p>}
-                    {error && !showSearchResult && <p>an error occured...</p>}
+                    {isLoading && !showSearchResult && <p>loading...</p>}
+                    {isError && !showSearchResult && <p>an error occured...</p>}
                 {/* if searching, show search result */}
                     {showSearchResult && searchResult.map(course => <Course key={course.DEPTCODE + course.COURSENUM + course.COURSELETTER} courseData={course}></Course>)}
             </div>
