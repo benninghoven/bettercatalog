@@ -1,0 +1,20 @@
+/* https://coolors.co/0d1b2a-1b263b-415a77-778da9-e0e1dd */
+
+.body {
+  background-color: #19376D;
+  min-height: 100vh;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+.searcharea {
+  border: .4rem solid #fff;
+  border-radius: .7rem;
+  width: 80vw;
+  max-width: 30rem;
+}
+
+.courses {
+  color: white;
+}

@@ -1,9 +1,8 @@
-*
-!.gitignore
-!./src
-!./Dockerfile
-!./LICENSE
-!./requirements.txt
-!./run.sh
+frontend/node_modules
+node_modules/
 
+*/__pycache__/
+*/*/__pycache__/
+
+.DS_Store
 

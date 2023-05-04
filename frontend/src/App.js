@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+// YE - NODE MODULES
+import React, { useState, useEffect } from 'react';
+
+// YE - COMPONENETS IMPORTS
+import Header from "./components/Header/Header"
+import CoursesView from './components/CoursesView/CoursesView';
+import ClassVisualization from './components/CoursesView/ClassVisualization/ClassVisualization.js';
+
+// YE - CSS IMPORTS
+import MainCss from './App.module.css';
+
+// YE - HOOKS IMPORTS
+import APITestButton from './components/APITestButton/APITestButton';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    const [btnClicked, setBtnClicked] = useState(false);
+
+    /* YE - arranged components as follows:
+        HEADER COMPONENT
+            includes:
+                Navbar
+                SearchBar
+                SearchButton
+                DropDown
+        COURSESVIEW COMPONENT
+            includes:
+                ClassVisualization - legacy (removed for new frontend)
+    */
+        
+    return (
+        <div className={MainCss.body}>
+            <Header></Header>
+            <CoursesView></CoursesView>
+            {/* <ClassVisualization /> */}
+            {/* <APITestButton btnClicked={btnClicked} setBtn={setBtnClicked}></APITestButton> */}
+        </div>
   );
 }
 

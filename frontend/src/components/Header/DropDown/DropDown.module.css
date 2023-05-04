@@ -1,0 +1,30 @@
+.dropdown{
+  height: 2rem;
+  border: .1rem solid white;
+  overflow: hidden;
+  padding: 0;
+}
+
+.dropdown select {
+  width: 100%;
+  height: 100%;
+
+  font-size: medium;
+  font-weight: bold;
+  color: gray;
+
+  border: none;
+  outline: none;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.dropdown select::-ms-expand {
+  display: none;
+}
+
+dropdown:empty {
+  display: none;
+}
