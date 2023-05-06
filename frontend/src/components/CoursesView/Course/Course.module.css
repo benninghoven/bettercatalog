@@ -1,3 +1,46 @@
-.course {
-    padding: 1rem;
+.course{
+    background-color: 	#F1F6F9;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    display: flex;
+    border-radious: .3rem;
+}
+
+.course_name{
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: left;
+    color: black;
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+
+.detailbtn{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    top: -1.5rem;
+    position: relative;
+    opacity: 0.1;
+    color:transparent;
+}
+
+.detailbtn :hover{
+    cursor: grab;
+}
+
+.course_details{
+    padding-left: 2rem;
+}
+
+.prereqbtn{
+    cursor: pointer;
+}
+
+.prereqbtn :hover{
+    cursor: grab;
+}
+
+.course_prereqs{
 }

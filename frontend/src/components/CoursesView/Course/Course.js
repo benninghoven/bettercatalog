@@ -11,17 +11,20 @@ const Course = ({courseData}) => {
   return (
     <>
       <div className={CourseCss.course}>
-        <div className={CourseCss.course_name}>{courseData.DEPTCODE} {courseData.COURSENUM}{courseData.COURSELETTER} - {courseData.COURSENAME}</div>
-        <button onClick={() => setShowDetails(!showDetails)}>show details</button>
+        <div className={CourseCss.course_name}>{courseData.DEPTCODE} {courseData.COURSENUM}{courseData.COURSELETTER} - {courseData.COURSENAME}
+        <button className={CourseCss.detailbtn} onClick={() => setShowDetails(!showDetails)}>show details</button>
+      </div>
         {showDetails &&
           <div className={CourseCss.course_details}>
             {courseData.COURSEDESCRIPTION}
           </div>
         }
-        <button onClick={() => setShowPrereqs(!showPrereqs)}>show prereqs</button>
+        <button className={CourseCss.prereqbtn} onClick={() => setShowPrereqs(!showPrereqs)}>show prereqs</button>
         {showPrereqs && prereqs &&
           prereqs.map(prereq =>
+          <div className={CourseCss.course_prereqs}>
             <div key={prereq.PREREQDEPT + prereq.PREREQNUM + prereq.PREREQCOURSELETTER} style={{"paddingLeft":`${prereq.PREREQLEVEL * 2}rem`}}>{prereq.PREREQDEPT} {prereq.PREREQNUM} {prereq.PREREQCOURSELETTER} {prereq.PREREQLEVEL}</div>
+          </div>
           )
         }
         {loading &&

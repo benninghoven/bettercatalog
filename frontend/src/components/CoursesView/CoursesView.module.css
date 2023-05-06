@@ -1,12 +1,11 @@
 .body {
 
     margin: 2% 25% 2% 25%;
-
     min-height: 25vh;
     background-color: white;
     border-radius: 30px;
-
     overflow: visible;
+    padding: 1rem;
 }
 
 /* TODO:
