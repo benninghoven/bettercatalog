@@ -21,4 +21,5 @@ cd bettercatalog
 docker-compose up
 ```
 
-<img width="1582" alt="Screenshot 2023-04-29 at 8 34 04 PM" src="https://github.com/benninghoven/bettercatalog/assets/49360048/5ed0a579-7e0f-447d-a64c-44a370ba6a9b">
+<img width="1476" alt="aaaa" src="https://github.com/benninghoven/bettercatalog/assets/49360048/4e2651a4-b3da-43ac-a44f-40722cf66350">
+
